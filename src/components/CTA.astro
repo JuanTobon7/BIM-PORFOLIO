@@ -1,0 +1,49 @@
+---
+---
+
+<section id="contacto" class="cta-section relative py-24 sm:py-32 overflow-hidden">
+  <!-- Background Image -->
+  <div class="cta-bg absolute inset-0 will-change-transform">
+    <img
+      src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1920&q=80"
+      alt="Construcción futurista"
+      class="w-full h-[120%] object-cover"
+      loading="lazy"
+    />
+  </div>
+
+  <!-- Overlay -->
+  <div class="absolute inset-0 bg-gradient-to-br from-primary/95 via-primary/85 to-cyan-accent/20"></div>
+
+  <!-- Content -->
+  <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <!-- Background number -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 text-[12rem] font-syne font-bold text-text-primary/[0.03] leading-none select-none pointer-events-none hidden lg:block">05</div>
+
+    <p class="text-cyan-accent text-sm tracking-widest uppercase mb-4 font-medium">Comienza tu proyecto</p>
+    <h2 class="font-syne font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-text-primary mb-6 leading-tight">
+      ¿Listo para construir<br />con <span class="text-cyan-accent">BIM</span>?
+    </h2>
+    <p class="text-text-secondary text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+      Agenda una demo gratuita y descubre cómo la metodología BIM puede transformar tus proyectos de construcción.
+    </p>
+
+    <!-- Form -->
+    <form class="flex flex-col sm:flex-row gap-3 max-w-xl mx-auto" onsubmit="return false;">
+      <input
+        type="email"
+        placeholder="tu@email.com"
+        class="flex-1 px-6 py-4 bg-surface/80 backdrop-blur border border-border-cyan text-text-primary placeholder:text-text-secondary/50 focus:outline-none focus:border-cyan-accent transition-colors text-sm"
+        required
+      />
+      <button
+        type="submit"
+        class="px-8 py-4 bg-cyan-accent text-primary font-semibold text-sm tracking-wide hover:bg-cyan-accent/90 transition-all duration-300 whitespace-nowrap"
+      >
+        Solicitar Demo
+      </button>
+    </form>
+
+    <p class="text-text-secondary/50 text-xs mt-4">Sin compromiso. Respuesta en menos de 24 horas.</p>
+  </div>
+</section>

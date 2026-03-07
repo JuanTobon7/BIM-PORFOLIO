@@ -1,0 +1,138 @@
+---
+const testimonials = [
+  {
+    name: 'Carlos Mendoza',
+    role: 'Director de Proyecto',
+    company: 'Constructora Altus',
+    text: 'FORMA BIM transformó nuestra forma de trabajar. La coordinación de clashes nos ahorró un 35% en costos imprevistos durante la obra. Su equipo es profesional y siempre disponible.',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
+  },
+  {
+    name: 'Ana Lucía Rivera',
+    role: 'Arquitecta Principal',
+    company: 'Estudio RAV',
+    text: 'La calidad de los modelos BIM y las visualizaciones que entrega FORMA BIM superaron todas nuestras expectativas. Han sido un aliado clave en nuestros proyectos más ambiciosos.',
+    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face',
+  },
+  {
+    name: 'Roberto Sánchez',
+    role: 'Gerente de Ingeniería',
+    company: 'Grupo Infraestructura Global',
+    text: 'Implementar BIM con FORMA fue la mejor decisión para nuestra empresa. Los presupuestos 5D nos dieron una precisión que nunca habíamos tenido. Totalmente recomendados.',
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
+  },
+];
+---
+
+<section class="relative py-24 sm:py-32 overflow-hidden">
+  <!-- Background number -->
+  <div class="absolute top-12 left-8 text-[15rem] font-syne font-bold text-text-primary/[0.03] leading-none select-none pointer-events-none hidden lg:block">04</div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="flex items-center gap-6 mb-16">
+      <div class="w-1 h-16 bg-gradient-to-b from-orange-accent to-transparent rounded-full"></div>
+      <div>
+        <p class="text-orange-accent text-sm tracking-widest uppercase mb-2 font-medium">Testimonios</p>
+        <h2 class="font-syne font-bold text-3xl sm:text-4xl md:text-5xl text-text-primary">
+          Lo que dicen nuestros <span class="text-orange-accent">clientes</span>
+        </h2>
+      </div>
+    </div>
+
+    <!-- Testimonials Slider -->
+    <div class="relative">
+      <div class="testimonials-wrapper overflow-hidden">
+        <div class="testimonials-track flex transition-transform duration-500 ease-out" id="testimonials-track">
+          {testimonials.map((t, idx) => (
+            <div class="testimonial-slide min-w-full px-0 sm:px-4" data-index={idx}>
+              <div class="max-w-3xl mx-auto">
+                <div class="bg-surface border border-border-cyan p-8 sm:p-12">
+                  <!-- Quote icon -->
+                  <svg class="w-10 h-10 text-cyan-accent/30 mb-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H0z"/>
+                  </svg>
+
+                  <p class="text-text-primary text-lg sm:text-xl leading-relaxed mb-8 italic">"{t.text}"</p>
+
+                  <div class="flex items-center gap-4">
+                    <img
+                      src={t.avatar}
+                      alt={t.name}
+                      class="w-12 h-12 rounded-full object-cover border-2 border-cyan-accent/30"
+                      loading="lazy"
+                    />
+                    <div>
+                      <p class="font-syne font-semibold text-text-primary">{t.name}</p>
+                      <p class="text-text-secondary text-sm">{t.role}, {t.company}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Navigation dots -->
+      <div class="flex justify-center gap-3 mt-8" id="testimonial-dots">
+        {testimonials.map((_, idx) => (
+          <button
+            class={`testimonial-dot w-3 h-3 rounded-full transition-all duration-300 ${idx === 0 ? 'bg-cyan-accent w-8' : 'bg-text-secondary/30 hover:bg-text-secondary/50'}`}
+            data-index={idx}
+            aria-label={`Testimonial ${idx + 1}`}
+          ></button>
+        ))}
+      </div>
+
+      <!-- Arrow buttons -->
+      <div class="hidden sm:flex justify-center gap-4 mt-6">
+        <button id="testimonial-prev" class="w-12 h-12 border border-border-cyan flex items-center justify-center text-text-secondary hover:text-cyan-accent hover:border-cyan-accent transition-all duration-300" aria-label="Previous">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <button id="testimonial-next" class="w-12 h-12 border border-border-cyan flex items-center justify-center text-text-secondary hover:text-cyan-accent hover:border-cyan-accent transition-all duration-300" aria-label="Next">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const track = document.getElementById('testimonials-track') as HTMLElement;
+  const dots = document.querySelectorAll('.testimonial-dot');
+  const prevBtn = document.getElementById('testimonial-prev');
+  const nextBtn = document.getElementById('testimonial-next');
+  let current = 0;
+  const total = dots.length;
+
+  function goTo(index: number) {
+    current = ((index % total) + total) % total;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((dot, i) => {
+      if (i === current) {
+        dot.classList.add('bg-cyan-accent', 'w-8');
+        dot.classList.remove('bg-text-secondary/30');
+      } else {
+        dot.classList.remove('bg-cyan-accent', 'w-8');
+        dot.classList.add('bg-text-secondary/30');
+      }
+    });
+  }
+
+  dots.forEach((dot) => {
+    dot.addEventListener('click', () => {
+      goTo(parseInt((dot as HTMLElement).dataset.index || '0'));
+    });
+  });
+
+  prevBtn?.addEventListener('click', () => goTo(current - 1));
+  nextBtn?.addEventListener('click', () => goTo(current + 1));
+
+  // Auto-rotate
+  let autoplay = setInterval(() => goTo(current + 1), 5000);
+  track.parentElement?.addEventListener('mouseenter', () => clearInterval(autoplay));
+  track.parentElement?.addEventListener('mouseleave', () => {
+    autoplay = setInterval(() => goTo(current + 1), 5000);
+  });
+</script>

@@ -1,0 +1,92 @@
+---
+const steps = [
+  {
+    num: '01',
+    title: 'Levantamiento y análisis',
+    desc: 'Evaluamos el proyecto, recopilamos información existente y definimos los requisitos BIM junto con el equipo de diseño.',
+  },
+  {
+    num: '02',
+    title: 'Modelado BIM',
+    desc: 'Creamos modelos 3D paramétricos detallados de cada disciplina: arquitectura, estructura e instalaciones.',
+  },
+  {
+    num: '03',
+    title: 'Coordinación y clash detection',
+    desc: 'Integramos todos los modelos y detectamos interferencias antes de que ocurran en obra, ahorrando tiempo y costos.',
+  },
+  {
+    num: '04',
+    title: 'Revisión y entrega',
+    desc: 'Presentamos el modelo coordinado, documentación técnica y entregables según los estándares acordados.',
+  },
+  {
+    num: '05',
+    title: 'Soporte y mantenimiento',
+    desc: 'Acompañamos durante la construcción y entregamos modelos as-built para la gestión operativa del activo.',
+  },
+];
+---
+
+<section id="proceso" class="process-section relative py-24 sm:py-32 overflow-hidden">
+  <!-- Background number -->
+  <div class="absolute top-12 right-8 text-[15rem] font-syne font-bold text-text-primary/[0.03] leading-none select-none pointer-events-none hidden lg:block">03</div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="flex items-center gap-6 mb-20">
+      <div class="w-1 h-16 bg-gradient-to-b from-cyan-accent to-transparent rounded-full"></div>
+      <div>
+        <p class="text-cyan-accent text-sm tracking-widest uppercase mb-2 font-medium">Metodología</p>
+        <h2 class="font-syne font-bold text-3xl sm:text-4xl md:text-5xl text-text-primary">
+          Nuestro <span class="text-cyan-accent">proceso</span>
+        </h2>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="relative">
+      <!-- Central line -->
+      <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2">
+        <div class="process-line w-full h-full bg-gradient-to-b from-cyan-accent via-cyan-accent/50 to-transparent will-change-transform"></div>
+      </div>
+      <!-- Mobile line -->
+      <div class="md:hidden absolute left-6 top-0 bottom-0 w-px">
+        <div class="process-line-mobile w-full h-full bg-gradient-to-b from-cyan-accent via-cyan-accent/50 to-transparent will-change-transform"></div>
+      </div>
+
+      <div class="space-y-16 md:space-y-24">
+        {steps.map((step, index) => (
+          <div class={`process-step relative flex flex-col md:flex-row items-start gap-8 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+            {/* Content */}
+            <div class={`flex-1 pl-16 md:pl-0 ${index % 2 === 0 ? 'md:text-right md:pr-16' : 'md:text-left md:pl-16'}`}>
+              <span class="text-cyan-accent/30 font-syne font-bold text-sm tracking-widest">{step.num}</span>
+              <h3 class="font-syne font-bold text-xl sm:text-2xl text-text-primary mt-1 mb-3">{step.title}</h3>
+              <p class="text-text-secondary leading-relaxed max-w-md inline-block">{step.desc}</p>
+            </div>
+
+            {/* Circle indicator - Desktop */}
+            <div class="hidden md:flex absolute left-1/2 -translate-x-1/2 w-12 h-12 items-center justify-center">
+              <div class="w-12 h-12 rounded-full border-2 border-cyan-accent bg-primary flex items-center justify-center">
+                <span class="text-cyan-accent font-syne font-bold text-sm">{step.num}</span>
+              </div>
+            </div>
+
+            {/* Circle indicator - Mobile */}
+            <div class="md:hidden absolute left-0 w-12 h-12 flex items-center justify-center">
+              <div class="w-12 h-12 rounded-full border-2 border-cyan-accent bg-primary flex items-center justify-center">
+                <span class="text-cyan-accent font-syne font-bold text-sm">{step.num}</span>
+              </div>
+            </div>
+
+            {/* Spacer for alternating layout */}
+            <div class="hidden md:block flex-1"></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Decorative line -->
+  <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-accent/30 to-transparent"></div>
+</section>

@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import Features from '../components/Features.astro';
+import Projects from '../components/Projects.astro';
+import Stats from '../components/Stats.astro';
+import Process from '../components/Process.astro';
+import Testimonials from '../components/Testimonials.astro';
+import CTA from '../components/CTA.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="FORMA BIM | Consultoría BIM Profesional">
+  <Navbar />
+  <main>
+    <Hero />
+    <Features />
+    <Projects />
+    <Stats />
+    <Process />
+    <Testimonials />
+    <CTA />
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  import '../scripts/animations.js';
+</script>

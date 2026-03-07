@@ -1,0 +1,41 @@
+---
+const stats = [
+  { value: 150, suffix: '+', label: 'Proyectos completados' },
+  { value: 98, suffix: '%', label: 'Satisfacción de clientes' },
+  { value: 12, suffix: '', label: 'Años de experiencia' },
+  { value: 40, suffix: '%', label: 'Reducción de errores' },
+];
+---
+
+<section class="relative py-20 sm:py-28 overflow-hidden">
+  <!-- Top decorative line -->
+  <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-accent/30 to-transparent"></div>
+
+  <!-- Background -->
+  <div class="absolute inset-0 bg-gradient-to-br from-surface via-primary to-surface"></div>
+
+  <!-- Dot pattern -->
+  <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(rgba(0, 229, 255, 0.15) 1px, transparent 1px); background-size: 24px 24px;"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+      {stats.map((stat) => (
+        <div class="text-center">
+          <div class="flex items-center justify-center">
+            <span
+              class="stat-number font-syne font-bold text-4xl sm:text-5xl md:text-6xl text-cyan-accent"
+              data-target={stat.value}
+            >
+              0
+            </span>
+            <span class="font-syne font-bold text-4xl sm:text-5xl md:text-6xl text-cyan-accent">{stat.suffix}</span>
+          </div>
+          <p class="text-text-secondary text-sm sm:text-base mt-3">{stat.label}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Bottom decorative line -->
+  <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-accent/30 to-transparent"></div>
+</section>

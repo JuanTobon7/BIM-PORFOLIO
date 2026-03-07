@@ -1,0 +1,80 @@
+---
+---
+
+<section class="hero-section relative w-full h-screen min-h-[600px] flex items-center overflow-hidden">
+  <!-- Background Image -->
+  <div class="absolute inset-0">
+    <img
+      src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1920&q=80"
+      alt="Edificio moderno"
+      class="w-full h-full object-cover"
+      loading="eager"
+    />
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/75 to-primary/85"></div>
+  </div>
+
+  <!-- Blueprint Grid Effect -->
+  <div class="absolute inset-0 blueprint-grid opacity-10"></div>
+
+  <!-- Animated grid lines -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="grid-line-h absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-accent/20 to-transparent"></div>
+    <div class="grid-line-h absolute top-2/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-accent/10 to-transparent"></div>
+    <div class="grid-line-h absolute top-3/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-accent/15 to-transparent"></div>
+    <div class="grid-line-v absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-cyan-accent/15 to-transparent"></div>
+    <div class="grid-line-v absolute top-0 left-2/4 w-px h-full bg-gradient-to-b from-transparent via-cyan-accent/10 to-transparent"></div>
+    <div class="grid-line-v absolute top-0 left-3/4 w-px h-full bg-gradient-to-b from-transparent via-cyan-accent/15 to-transparent"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+    <div class="max-w-4xl">
+      <!-- Badge -->
+      <div class="hero-line inline-flex items-center gap-2 px-4 py-1.5 border border-border-cyan rounded-full mb-8">
+        <span class="w-2 h-2 rounded-full bg-cyan-accent animate-pulse"></span>
+        <span class="text-cyan-accent text-xs tracking-widest uppercase font-medium">Consultoría BIM</span>
+      </div>
+
+      <!-- Title -->
+      <h1 class="font-syne font-bold leading-[0.95] mb-6">
+        <span class="hero-line block text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-text-primary">Construye el futuro</span>
+        <span class="hero-line block text-5xl sm:text-6xl md:text-7xl lg:text-8xl mt-2">
+          <span class="text-text-primary">con </span>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-accent to-cyan-400">inteligencia BIM</span>
+        </span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="hero-line text-text-secondary text-lg sm:text-xl max-w-2xl leading-relaxed mb-10">
+        Modelado, coordinación y gestión de proyectos de construcción con tecnología BIM de última generación.
+      </p>
+
+      <!-- Buttons -->
+      <div class="hero-line flex flex-wrap gap-4">
+        <a href="#proyectos" class="group inline-flex items-center gap-2 px-8 py-4 bg-cyan-accent text-primary font-semibold text-sm tracking-wide hover:bg-cyan-accent/90 transition-all duration-300">
+          Ver Proyectos
+          <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+        </a>
+        <a href="#proceso" class="inline-flex items-center gap-2 px-8 py-4 border border-text-primary/30 text-text-primary font-semibold text-sm tracking-wide hover:border-cyan-accent hover:text-cyan-accent transition-all duration-300">
+          Conocer Proceso
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 hero-line">
+    <span class="text-text-secondary text-xs tracking-widest uppercase">Scroll</span>
+    <div class="w-px h-12 bg-gradient-to-b from-cyan-accent/50 to-transparent animate-pulse"></div>
+  </div>
+</section>
+
+<style>
+  .blueprint-grid {
+    background-image:
+      linear-gradient(rgba(0, 229, 255, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 229, 255, 0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+</style>
