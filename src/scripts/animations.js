@@ -45,6 +45,19 @@ if (!prefersReducedMotion) {
     delay: 0.3,
   });
 
+  // Hero animation - start dotLottie when it becomes visible
+  gsap.from('#dotlottie-canvas', {
+    opacity: 0,
+    duration: 1,
+    ease: 'power4.out',
+    delay: 0.3,
+    onStart: function () {
+      if (window.dotLottieInstance) {
+        window.dotLottieInstance.play();
+      }
+    },
+  });
+
   // ─── FEATURES ─────────────────────────────────────────
   gsap.from('.feature-card', {
     scrollTrigger: {

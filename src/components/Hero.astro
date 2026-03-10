@@ -29,37 +29,47 @@
 
   <!-- Content -->
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-    <div class="max-w-4xl">
-      <!-- Badge -->
-      <div class="hero-line inline-flex items-center gap-2 px-4 py-1.5 border border-border-cyan rounded-full mb-8">
-        <span class="w-2 h-2 rounded-full bg-cyan-accent animate-pulse"></span>
-        <span class="text-cyan-accent text-xs tracking-widest uppercase font-medium">Consultoría BIM</span>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+
+      <!-- LEFT COLUMN -->
+      <div class="max-w-2xl lg:max-w-lg">
+
+  <!-- Badge -->
+  <div class="hero-line inline-flex items-center gap-2 px-4 py-1 border border-border-cyan rounded-full mb-6">
+    <span class="w-2 h-2 rounded-full bg-cyan-accent animate-pulse"></span>
+    <span class="text-cyan-accent text-xs tracking-widest uppercase font-medium">
+      Consultoría BIM
+    </span>
+  </div>
+
+  <!-- Title -->
+  <h1 class="font-syne font-bold leading-[0.95] mb-6 max-w-xl">
+    <span class="hero-line block text-5xl sm:text-6xl md:text-6xl lg:text-7xl text-text-primary">
+      Transformamos la construcción
+    </span>
+    <span class="hero-line block text-5xl sm:text-6xl md:text-6xl lg:text-7xl mt-2">
+      <span class="text-text-primary">con </span>
+      <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-accent to-cyan-400">
+        metodología BIM
+      </span>
+    </span>
+  </h1>
+
+  <!-- Subtitle -->
+  <p class="hero-line text-text-secondary text-lg max-w-md leading-relaxed mb-8">
+    Modelado, coordinación y gestión BIM para proyectos complejos en arquitectura, estructura e instalaciones.
+  </p>
+
+</div>
+
+      <!-- RIGHT COLUMN (LOTTIE) -->
+      <div class="hero-line hidden lg:flex justify-center items-center right-0">
+        <canvas
+          id="dotlottie-canvas"
+          class="w-full max-w-[800px] h-auto"
+        ></canvas>
       </div>
 
-      <!-- Title -->
-      <h1 class="font-syne font-bold leading-[0.95] mb-6">
-        <span class="hero-line block text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-text-primary">Transformamos la construcción</span>
-        <span class="hero-line block text-5xl sm:text-6xl md:text-7xl lg:text-8xl mt-2">
-          <span class="text-text-primary">con </span>
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-accent to-cyan-400">metodología BIM</span>
-        </span>
-      </h1>
-
-      <!-- Subtitle -->
-      <p class="hero-line text-text-secondary text-lg sm:text-xl max-w-2xl leading-relaxed mb-10">
-        Modelado, coordinación y gestión BIM para proyectos complejos en arquitectura,estructura e instalaciones.
-      </p>
-
-      <!-- Buttons -->
-      <div class="hero-line flex flex-wrap gap-4">
-        <a href="#proyectos" class="group inline-flex items-center gap-2 px-8 py-4 bg-cyan-accent text-primary font-semibold text-sm tracking-wide hover:bg-cyan-accent/90 transition-all duration-300">
-          Ver Proyectos
-          <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-        </a>
-        <a href="#proceso" class="inline-flex items-center gap-2 px-8 py-4 border border-text-primary/30 text-text-primary font-semibold text-sm tracking-wide hover:border-cyan-accent hover:text-cyan-accent transition-all duration-300">
-          Conocer Proceso
-        </a>
-      </div>
     </div>
   </div>
 
@@ -69,6 +79,33 @@
     <div class="w-px h-12 bg-gradient-to-b from-cyan-accent/50 to-transparent animate-pulse"></div>
   </div>
 </section>
+
+<script>
+  import { DotLottie } from '@lottiefiles/dotlottie-web';
+
+  // Initialize dotLottie animation when DOM is ready
+  const canvas = document.querySelector('#dotlottie-canvas');
+  if (canvas) {
+    const dotLottie = new DotLottie({
+      canvas: canvas,
+      autoplay: false,
+      loop: true,
+      src: '/animations/Construction_works.json',
+      renderConfig: {
+        autoResize: true,
+        devicePixelRatio: 1,
+      },
+      layout: {
+        fit: 'cover',
+        align: [0.5, 0.5],
+      },
+      speed: 1,
+    });
+
+    // Store in window for GSAP to access
+    window.dotLottieInstance = dotLottie;
+  }
+</script>
 
 <style>
   .blueprint-grid {
