@@ -85,7 +85,7 @@ if (!prefersReducedMotion) {
 
   // ─── STATS ────────────────────────────────────────────
   document.querySelectorAll('.stat-number').forEach((el) => {
-    const target = parseInt(el.dataset.target || '0');
+    const target = Number.parseInt(el.dataset.target || '0');
     gsap.to(
       { val: 0 },
       {
@@ -102,6 +102,66 @@ if (!prefersReducedMotion) {
       }
     );
   });
+
+  // ─── STATS: FLAGS RELAY (sincronizado con el timeline de las stats) ──
+  // El relevo de banderas se dispara cuando la sección de stats entra en viewport,
+  // al mismo tiempo que los contadores (2s). Cada bandera aparece en secuencia
+  // (USA -> España -> Perú -> Chile -> México -> Colombia) con un pulso de relevo
+  // suave, quedando todas visibles al final.
+  const flagsRelay = document.querySelector('.flags-relay');
+  if (flagsRelay) {
+    const flagItems = gsap.utils.toArray('.flag-item');
+    const flagsTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: flagsRelay,
+        start: 'top 90%',
+      },
+      defaults: { ease: 'power2.inOut' },
+    });
+
+    flagItems.forEach((flag, i) => {
+      const t = i * 0.18; // stagger suave entre banderas
+
+      // 1. Aparece la bandera (fade + subida + escala)
+      flagsTl.to(
+        flag,
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.45,
+          ease: 'power3.out',
+        },
+        t
+      );
+
+      // 2. Pulso de relevo (brillo + elevación) — se solapa con la aparición
+      flagsTl.to(
+        flag,
+        {
+          filter: 'brightness(1.4) saturate(1.25)',
+          y: -5,
+          scale: 1.1,
+          duration: 0.35,
+          ease: 'sine.inOut',
+        },
+        t + 0.35
+      );
+
+      // 3. Vuelve a la normalidad (queda visible)
+      flagsTl.to(
+        flag,
+        {
+          filter: 'brightness(1) saturate(1)',
+          y: 0,
+          scale: 1,
+          duration: 0.45,
+          ease: 'sine.inOut',
+        },
+        t + 0.7
+      );
+    });
+  }
 
   // ─── PROCESS ──────────────────────────────────────────
   // Line draw on scroll

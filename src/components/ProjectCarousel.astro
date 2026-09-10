@@ -1,0 +1,133 @@
+---
+interface Props {
+  images: string[];
+  title: string;
+}
+
+const { images, title } = Astro.props;
+---
+
+<div class="project-carousel relative w-full overflow-hidden bg-surface" data-carousel>
+  <!-- Track -->
+  <div class="carousel-track flex transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" data-track>
+    {images.map((image, index) => (
+      <div class="carousel-slide w-full flex-shrink-0 relative aspect-[16/16] sm:aspect-[16/9]" data-slide>
+        <img
+          src={image}
+          alt={`${title} - Imagen ${index + 1}`}
+          class="w-full h-full object-cover"
+          loading={index === 0 ? 'eager' : 'lazy'}
+          draggable="false"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent pointer-events-none"></div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Counter -->
+  <div class="absolute top-4 right-4 z-10 px-3 py-1.5 bg-primary/70 backdrop-blur-md border border-border-cyan rounded-full text-xs font-medium text-text-primary tracking-widest" data-counter>
+    <span data-current>1</span> / {images.length}
+  </div>
+
+  <!-- Arrows -->
+  <button
+    class="carousel-arrow absolute left-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11 flex items-center justify-center bg-primary/70 backdrop-blur-md border border-border-cyan text-text-primary hover:bg-cyan-accent hover:text-primary hover:border-cyan-accent transition-all duration-300 rounded-full"
+    data-prev
+    aria-label="Imagen anterior"
+  >
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+  </button>
+  <button
+    class="carousel-arrow absolute right-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11 flex items-center justify-center bg-primary/70 backdrop-blur-md border border-border-cyan text-text-primary hover:bg-cyan-accent hover:text-primary hover:border-cyan-accent transition-all duration-300 rounded-full"
+    data-next
+    aria-label="Imagen siguiente"
+  >
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+  </button>
+
+  <!-- Dots -->
+  <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2" data-dots>
+    {images.map((_, index) => (
+      <button
+        class="carousel-dot w-2.5 h-2.5 rounded-full bg-text-primary/30 hover:bg-text-primary/60 transition-all duration-300"
+        data-dot={index}
+        aria-label={`Ir a la imagen ${index + 1}`}
+      ></button>
+    ))}
+  </div>
+</div>
+
+<script>
+  const carousel = document.querySelector('[data-carousel]') as HTMLElement;
+  if (carousel) {
+    const track = carousel.querySelector('[data-track]') as HTMLElement;
+    const slides = Array.from(carousel.querySelectorAll('[data-slide]')) as HTMLElement[];
+    const dots = Array.from(carousel.querySelectorAll('[data-dot]')) as HTMLElement[];
+    const currentLabel = carousel.querySelector('[data-current]') as HTMLElement;
+    const prevBtn = carousel.querySelector('[data-prev]') as HTMLElement;
+    const nextBtn = carousel.querySelector('[data-next]') as HTMLElement;
+
+    let index = 0;
+    let startX = 0;
+    let isDragging = false;
+
+    const total = slides.length;
+
+    function goTo(i: number) {
+      index = (i + total) % total;
+      track.style.transform = `translateX(-${index * 100}%)`;
+      currentLabel.textContent = String(index + 1);
+      dots.forEach((dot, di) => {
+        dot.classList.toggle('bg-cyan-accent', di === index);
+        dot.classList.toggle('bg-text-primary/30', di !== index);
+      });
+    }
+
+    prevBtn?.addEventListener('click', () => goTo(index - 1));
+    nextBtn?.addEventListener('click', () => goTo(index + 1));
+    dots.forEach((dot, di) => dot.addEventListener('click', () => goTo(di)));
+
+    // Keyboard navigation
+    carousel.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') goTo(index - 1);
+      if (e.key === 'ArrowRight') goTo(index + 1);
+    });
+    carousel.setAttribute('tabindex', '0');
+
+    // Touch / mouse swipe
+    carousel.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+      isDragging = true;
+    });
+    carousel.addEventListener('touchend', (e) => {
+      if (!isDragging) return;
+      const diff = e.changedTouches[0].clientX - startX;
+      if (Math.abs(diff) > 50) {
+        goTo(diff < 0 ? index + 1 : index - 1);
+      }
+      isDragging = false;
+    });
+
+    // Mouse drag
+    carousel.addEventListener('mousedown', (e) => {
+      startX = e.clientX;
+      isDragging = true;
+    });
+    window.addEventListener('mouseup', () => {
+      if (isDragging) {
+        isDragging = false;
+      }
+    });
+    carousel.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      const diff = e.clientX - startX;
+      if (Math.abs(diff) > 50) {
+        goTo(diff < 0 ? index + 1 : index - 1);
+        isDragging = false;
+      }
+    });
+
+    // Init
+    goTo(0);
+  }
+</script>

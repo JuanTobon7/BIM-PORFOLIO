@@ -1,0 +1,145 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import ProjectCarousel from '../../components/ProjectCarousel.astro';
+import { projects, getProject } from '../../data/projects';
+
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+
+// Previous / next project for navigation
+const currentIndex = projects.findIndex((p) => p.slug === project.slug);
+const prevProject = projects[(currentIndex - 1 + projects.length) % projects.length];
+const nextProject = projects[(currentIndex + 1) % projects.length];
+---
+
+<ProjectLayout project={project}>
+  <Navbar />
+
+  <main class="pt-20">
+    <!-- Hero -->
+    <section class="relative py-16 sm:py-24 overflow-hidden">
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <!-- Breadcrumb -->
+        <a href="/#proyectos" class="inline-flex items-center gap-2 text-text-secondary hover:text-cyan-accent transition-colors text-sm mb-8">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          Volver a proyectos
+        </a>
+
+        <div class="flex items-center gap-6 mb-8">
+          <div class="w-1 h-16 bg-gradient-to-b from-orange-accent to-transparent rounded-full"></div>
+          <div>
+            <p class="text-orange-accent text-sm tracking-widest uppercase mb-2 font-medium">{project.category}</p>
+            <h1 class="font-syne font-bold text-4xl sm:text-5xl md:text-6xl text-text-primary">
+              {project.title}
+            </h1>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-4 mb-12">
+          <span class="inline-flex items-center gap-2 px-4 py-1.5 border border-border-cyan rounded-full text-sm text-text-secondary">
+            <svg class="w-4 h-4 text-cyan-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            {project.year}
+          </span>
+          <span class="inline-flex items-center gap-2 px-4 py-1.5 border border-border-cyan rounded-full text-sm text-text-secondary">
+            <svg class="w-4 h-4 text-cyan-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            {project.location}
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Carousel -->
+    <section class="pb-16 sm:pb-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <ProjectCarousel images={project.images} title={project.title} />
+      </div>
+    </section>
+
+    <!-- Description & Details -->
+    <section class="pb-16 sm:pb-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+          <!-- Description -->
+          <div class="lg:col-span-2">
+            <div class="flex items-center gap-6 mb-8">
+              <div class="w-1 h-12 bg-gradient-to-b from-cyan-accent to-transparent rounded-full"></div>
+              <h2 class="font-syne font-bold text-2xl sm:text-3xl text-text-primary">Sobre el proyecto</h2>
+            </div>
+            <p class="text-text-secondary text-lg leading-relaxed max-w-2xl">{project.description}</p>
+          </div>
+
+          <!-- Details -->
+          <div class="bg-surface border border-border-cyan p-8 h-fit">
+            <h3 class="font-syne font-semibold text-text-primary text-lg mb-6">Detalles del proyecto</h3>
+            <dl class="space-y-5">
+              {project.details.map((detail) => (
+                <div class="flex justify-between gap-4 border-b border-border-cyan/50 pb-4 last:border-0 last:pb-0">
+                  <dt class="text-text-secondary text-sm">{detail.label}</dt>
+                  <dd class="text-text-primary text-sm font-medium text-right">{detail.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Next / Prev project navigation -->
+    <section class="pb-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <a
+            href={`/proyectos/${prevProject.slug}`}
+            class="group relative overflow-hidden aspect-[16/9] bg-surface border border-border-cyan"
+          >
+            <img
+              src={prevProject.cover}
+              alt={prevProject.title}
+              class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 group-hover:scale-105 transition-all duration-700"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6 flex items-end justify-between">
+              <div>
+                <p class="text-cyan-accent text-xs tracking-widest uppercase font-medium mb-1">Proyecto anterior</p>
+                <h3 class="font-syne font-bold text-xl text-text-primary">{prevProject.title}</h3>
+              </div>
+              <svg class="w-6 h-6 text-text-primary group-hover:text-cyan-accent transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+            </div>
+          </a>
+
+          <a
+            href={`/proyectos/${nextProject.slug}`}
+            class="group relative overflow-hidden aspect-[16/9] bg-surface border border-border-cyan"
+          >
+            <img
+              src={nextProject.cover}
+              alt={nextProject.title}
+              class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 group-hover:scale-105 transition-all duration-700"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6 flex items-end justify-between">
+              <div>
+                <p class="text-cyan-accent text-xs tracking-widest uppercase font-medium mb-1">Siguiente proyecto</p>
+                <h3 class="font-syne font-bold text-xl text-text-primary">{nextProject.title}</h3>
+              </div>
+              <svg class="w-6 h-6 text-text-primary group-hover:text-cyan-accent transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</ProjectLayout>

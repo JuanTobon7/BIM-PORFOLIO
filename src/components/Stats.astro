@@ -3,7 +3,17 @@ const stats = [
   { value: 35, suffix: '+', label: 'Proyectos completados' },
   { value: 5, suffix: '+', label: 'Años de experiencia' },
   { value: 40, suffix: '%', label: 'Reducción de errores' },
-  { value: 5 , suffix: '+', label: 'Países alcanzados' },
+  { value: 5, suffix: '+', label: 'Países alcanzados' },
+];
+
+// Países en orden de relevo: USA -> España -> Perú -> Chile -> México -> Colombia
+const countries = [
+  { name: 'Estados Unidos', flag: 'usa' },
+  { name: 'España', flag: 'espana' },
+  { name: 'Perú', flag: 'peru' },
+  { name: 'Chile', flag: 'chile' },
+  { name: 'México', flag: 'mexico' },
+  { name: 'Colombia', flag: 'colombia' },
 ];
 ---
 
@@ -31,6 +41,79 @@ const stats = [
             <span class="font-syne font-bold text-4xl sm:text-5xl md:text-6xl text-cyan-accent">{stat.suffix}</span>
           </div>
           <p class="text-text-secondary text-sm sm:text-base mt-3">{stat.label}</p>
+
+          <!-- Flags relay -->
+          {stat.label === 'Países alcanzados' && (
+            <div class="flags-relay flex items-center justify-center gap-2 sm:gap-2.5 mt-4" aria-label="Países alcanzados: Estados Unidos, España, Perú, Chile, México y Colombia">
+              {countries.map((country, index) => (
+                <span
+                  class="flag-item inline-block w-7 h-5 sm:w-8 sm:h-5.5 rounded-[3px] overflow-hidden shadow-lg shadow-black/40 ring-1 ring-white/10"
+                  title={country.name}
+                  role="img"
+                  aria-label={`Bandera de ${country.name}`}
+                >
+                  {country.flag === 'usa' && (
+                    <svg viewBox="0 0 60 40" class="w-full h-full" preserveAspectRatio="none">
+                      <rect width="60" height="40" fill="#fff" />
+                      {[0, 2, 4, 6, 8, 10, 12].map((y) => (
+                        <rect y={y * 3.33} width="60" height="3.33" fill="#B22234" />
+                      ))}
+                      <rect width="24" height="21" fill="#3C3B6E" />
+                      {Array.from({ length: 50 }, (_, i) => {
+                        const col = i % 6;
+                        const row = Math.floor(i / 6);
+                        return (
+                          <circle
+                            cx={2 + col * 4}
+                            cy={1.5 + row * 3.6}
+                            r="0.7"
+                            fill="#fff"
+                          />
+                        );
+                      })}
+                    </svg>
+                  )}
+                  {country.flag === 'espana' && (
+                    <svg viewBox="0 0 60 40" class="w-full h-full" preserveAspectRatio="none">
+                      <rect width="60" height="40" fill="#AA151B" />
+                      <rect y="10" width="60" height="20" fill="#F1BF00" />
+                      <rect x="26" y="12" width="8" height="16" fill="#AA151B" />
+                    </svg>
+                  )}
+                  {country.flag === 'peru' && (
+                    <svg viewBox="0 0 60 40" class="w-full h-full" preserveAspectRatio="none">
+                      <rect width="20" height="40" fill="#D91023" />
+                      <rect x="20" width="20" height="40" fill="#fff" />
+                      <rect x="40" width="20" height="40" fill="#D91023" />
+                    </svg>
+                  )}
+                  {country.flag === 'chile' && (
+                    <svg viewBox="0 0 60 40" class="w-full h-full" preserveAspectRatio="none">
+                      <rect width="60" height="20" fill="#fff" />
+                      <rect y="20" width="60" height="20" fill="#D52B1E" />
+                      <rect width="20" height="20" fill="#0039A6" />
+                      <polygon points="10,4 11.5,8 16,8 12.5,10.5 14,15 10,12 6,15 7.5,10.5 4,8 8.5,8" fill="#fff" />
+                    </svg>
+                  )}
+                  {country.flag === 'mexico' && (
+                    <svg viewBox="0 0 60 40" class="w-full h-full" preserveAspectRatio="none">
+                      <rect width="20" height="40" fill="#006847" />
+                      <rect x="20" width="20" height="40" fill="#fff" />
+                      <rect x="40" width="20" height="40" fill="#CE1126" />
+                      <circle cx="30" cy="20" r="6" fill="#8B6914" />
+                    </svg>
+                  )}
+                  {country.flag === 'colombia' && (
+                    <svg viewBox="0 0 60 40" class="w-full h-full" preserveAspectRatio="none">
+                      <rect width="60" height="20" fill="#FCD116" />
+                      <rect y="20" width="60" height="10" fill="#003893" />
+                      <rect y="30" width="60" height="10" fill="#CE1126" />
+                    </svg>
+                  )}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
       ))}
     </div>
@@ -39,3 +122,21 @@ const stats = [
   <!-- Bottom decorative line -->
   <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-accent/30 to-transparent"></div>
 </section>
+
+<style>
+  /* Las banderas se animan con GSAP (sincronizadas con el timeline de las stats).
+     Aquí solo definimos el estado inicial para que no parpadeen antes del scroll. */
+  .flag-item {
+    opacity: 0;
+    transform: translateY(12px) scale(0.6);
+    filter: brightness(0.55) saturate(0.7);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .flag-item {
+      opacity: 1;
+      transform: none;
+      filter: none;
+    }
+  }
+</style>

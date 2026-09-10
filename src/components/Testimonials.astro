@@ -1,32 +1,37 @@
 ---
 const testimonials = [
   {
-    name: 'Carlos Mendoza',
-    role: 'Director de Proyecto',
-    company: 'Constructora Altus',
-    text: 'BIMCRAFT transformó nuestra forma de trabajar. La coordinación de clashes nos ahorró un 35% en costos imprevistos durante la obra. Su equipo es profesional y siempre disponible.',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
+    name: 'Arq. Jose Manuel Sosa Garcia',
+    role: 'Arquitecto',
+    company: 'Cliente',
+    text: 'Trabajar con BIMCRAFT ha sido una experiencia muy positiva. Destaco especialmente su compromiso, atención al detalle y capacidad para comprender las necesidades del proyecto. Su trabajo en modelado BIM facilita significativamente la toma de decisiones y permite contar con información clara y organizada. Es un equipo profesional, responsable y con una excelente disposición para resolver cada requerimiento.',
+    avatar: '/clients_testimony/Arq.%20Jose_Manuel_Sosa.jpg',
   },
   {
-    name: 'Ana Lucía Rivera',
-    role: 'Arquitecta Principal',
-    company: 'Estudio RAV',
-    text: 'La calidad de los modelos BIM y las visualizaciones que entrega BIMCRAFT superaron todas nuestras expectativas. Han sido un aliado clave en nuestros proyectos más ambiciosos.',
-    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face',
+    name: 'Arq. Cristian Caballero',
+    role: 'Arquitecto',
+    company: 'Cliente',
+    text: 'Excelente experiencia trabajando con esta empresa de modelado BIM. Se destacan por su alto nivel de cumplimiento en los tiempos de entrega y por un profesionalismo impecable en cada etapa del proceso. La calidad del modelo, la precisión técnica y la disposición para atender observaciones hacen que sean un aliado confiable para cualquier proyecto. Totalmente recomendados.',
+    avatar: '/clients_testimony/Arq_Cristian_Caballero.jpeg',
   },
   {
-    name: 'Roberto Sánchez',
-    role: 'Gerente de Ingeniería',
-    company: 'Grupo Infraestructura Global',
-    text: 'Implementar BIM con BIMCRAFT fue la mejor decisión para nuestra empresa. Los presupuestos 5D nos dieron una precisión que nunca habíamos tenido. Totalmente recomendados.',
-    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
+    name: 'Ing. Carlos Andres Mendoza',
+    role: 'Ingeniero',
+    company: 'Cliente',
+    text: 'BIMCRAFT se caracteriza por ofrecer un trabajo técnico de muy buena calidad y con un alto nivel de compromiso. Durante el desarrollo del proyecto demostraron capacidad para adaptarse a los requerimientos, resolver observaciones y mantener una comunicación constante. La precisión de sus modelos y la organización de la información generan confianza y aportan un verdadero valor al desarrollo del proyecto.',
+    avatar: '/clients_testimony/Ing_Carlos_Andres.jpg',
+  },
+  {
+    name: 'ARCHDECONSULTORIA',
+    role: 'Empresa',
+    company: 'Cliente',
+    text: 'Nuestra experiencia trabajando con BIMCRAFT ha sido excelente. Encontramos un equipo comprometido, organizado y con un sólido conocimiento de la metodología BIM. Su capacidad técnica y disposición para trabajar de manera colaborativa han sido fundamentales para alcanzar los objetivos planteados. Recomendamos a BIMCRAFT como un aliado estratégico para proyectos que requieran modelado, coordinación y gestión de información BIM.',
+    avatar: '/clients_testimony/ARCH.jpg',
   },
 ];
 ---
 
 <section class="relative py-24 sm:py-32 overflow-hidden">
-  <!-- Background number -->
-  <div class="absolute top-12 left-8 text-[15rem] font-syne font-bold text-text-primary/[0.03] leading-none select-none pointer-events-none hidden lg:block">04</div>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Section Header -->
@@ -60,7 +65,6 @@ const testimonials = [
                       src={t.avatar}
                       alt={t.name}
                       class="w-12 h-12 rounded-full object-cover border-2 border-cyan-accent/30"
-                      loading="lazy"
                     />
                     <div>
                       <p class="font-syne font-semibold text-text-primary">{t.name}</p>
