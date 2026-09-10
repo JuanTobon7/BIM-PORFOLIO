@@ -1,6 +1,7 @@
 ---
 import type { Project } from '../data/projects';
 import ProjectCarousel from '../components/ProjectCarousel.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
 
 interface Props {
   project: Project;
@@ -29,6 +30,9 @@ const { project } = Astro.props;
     <div class="custom-cursor"></div>
 
     <slot />
+
+    <!-- Floating WhatsApp button -->
+    <WhatsAppButton />
 
     <style is:global>
       /* Noise grain effect */
