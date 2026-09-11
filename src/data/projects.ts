@@ -36,31 +36,8 @@ export const projects: Project[] = [
       '/carrillo_puerto/IMG_1375.jpg',
       '/carrillo_puerto/IMG_1382.jpg',
     ],
-    cover: '/carrillo_puerto/IMG_1345.jpg',
+    cover: '/carrillo_puerto/IMG_1344.jpg',
     large: true,
-  },
-  {
-    slug: 'escarcega',
-    title: 'Escarcerga',
-    category: 'Industrial',
-    year: '2023',
-    location: 'Escárcega, CM',
-    description:
-      'Proyecto industrial con modelado de instalaciones y obra. Levantamiento, modelado y documentación técnica para la ejecución de la obra.',
-    details: [
-      { label: 'Cliente', value: 'Privado' },
-      { label: 'Alcance', value: 'Instalaciones, Obra' },
-      { label: 'Software', value: 'Revit, AutoCAD' },
-      { label: 'Ubicación', value: 'Escárcega, CM' },
-    ],
-    images: [
-      '/escarcega/Foto%20Obra%202.jpg',
-      '/escarcega/Imagen%201%20Instalaciones%201.jpg',
-      '/escarcega/Imagen%201%20Instalaciones.jpg',
-      '/escarcega/Imagen%202%20Instalaciones.jpg',
-    ],
-    cover: '/escarcega/Foto%20Obra%202.jpg',
-    large: false,
   },
   {
     slug: 'hecelchakan',
@@ -88,6 +65,30 @@ export const projects: Project[] = [
     cover: '/hecelchak/Copia%20de%20IMG_0758.jpg',
     large: false,
   },
+  
+  {
+    slug: 'escarcega',
+    title: 'Escarcerga',
+    category: 'Industrial',
+    year: '2023',
+    location: 'Escárcega, CM',
+    description:
+      'Proyecto industrial con modelado de instalaciones y obra. Levantamiento, modelado y documentación técnica para la ejecución de la obra.',
+    details: [
+      { label: 'Cliente', value: 'Privado' },
+      { label: 'Alcance', value: 'Instalaciones, Obra' },
+      { label: 'Software', value: 'Revit, AutoCAD' },
+      { label: 'Ubicación', value: 'Escárcega, CM' },
+    ],
+    images: [
+      '/escarcega/Foto%20Obra%202.jpg',
+      '/escarcega/Imagen%201%20Instalaciones%201.jpg',
+      '/escarcega/Imagen%201%20Instalaciones.jpg',
+      '/escarcega/Imagen%202%20Instalaciones.jpg',
+    ],
+    cover: '/escarcega/Foto%20Obra%202.jpg',
+    large: false,
+  }
 ];
 
 export function getProject(slug: string): Project | undefined {
