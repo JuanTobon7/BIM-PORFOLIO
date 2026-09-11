@@ -7,7 +7,7 @@ interface Props {
 const { images, title } = Astro.props;
 ---
 
-<div class="project-carousel relative w-full overflow-hidden bg-surface" data-carousel>
+<div class="project-carousel relative w-full overflow-hidden bg-surface rounded-lg" data-carousel>
   <!-- Track -->
   <div class="carousel-track flex transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" data-track>
     {images.map((image, index) => (

@@ -21,7 +21,7 @@ import { projects } from '../data/projects';
       <!-- Large project -->
       <a
         href={`/proyectos/${projects[0].slug}`}
-        class="project-card group relative overflow-hidden aspect-[4/5] lg:aspect-auto lg:row-span-2 will-change-transform block"
+        class="project-card group relative overflow-hidden aspect-[4/5] lg:aspect-auto lg:row-span-2 will-change-transform block rounded-lg"
         style="clip-path: inset(0%);"
       >
         <img
@@ -45,7 +45,7 @@ import { projects } from '../data/projects';
       {projects.slice(1).map((project) => (
         <a
           href={`/proyectos/${project.slug}`}
-          class="project-card group relative overflow-hidden aspect-[16/10] will-change-transform block"
+          class="project-card group relative overflow-hidden aspect-[16/10] will-change-transform block rounded-lg"
           style="clip-path: inset(0%);"
         >
           <img

@@ -99,7 +99,7 @@ const nextProject = projects[(currentIndex + 1) % projects.length];
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <a
             href={`/proyectos/${prevProject.slug}`}
-            class="group relative overflow-hidden aspect-[16/9] bg-surface border border-border-cyan"
+            class="group relative overflow-hidden aspect-[16/9] bg-surface border border-border-cyan rounded-lg"
           >
             <img
               src={prevProject.cover}
@@ -119,7 +119,7 @@ const nextProject = projects[(currentIndex + 1) % projects.length];
 
           <a
             href={`/proyectos/${nextProject.slug}`}
-            class="group relative overflow-hidden aspect-[16/9] bg-surface border border-border-cyan"
+            class="group relative overflow-hidden aspect-[16/9] bg-surface border border-border-cyan rounded-lg"
           >
             <img
               src={nextProject.cover}
