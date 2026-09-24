@@ -52,8 +52,22 @@ if (!prefersReducedMotion) {
     ease: 'power4.out',
     delay: 0.3,
     onStart: function () {
-      if (window.dotLottieInstance) {
-        window.dotLottieInstance.play();
+      const desktop = (window).dotLottieInstance;
+      if (desktop) {
+        desktop.play();
+      }
+    },
+  });
+
+  gsap.from('#dotlottie-canvas-mobile', {
+    opacity: 0,
+    duration: 1,
+    ease: 'power4.out',
+    delay: 0.3,
+    onStart: function () {
+      const mobile = (window).dotLottieInstanceMobile;
+      if (mobile) {
+        mobile.play();
       }
     },
   });

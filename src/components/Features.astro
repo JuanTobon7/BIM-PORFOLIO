@@ -34,6 +34,11 @@ const features = [
     title: 'Consultoría y Asesoramiento BIM',
     desc: 'Asesoramos a organizaciones en la implementación de la metodología BIM, definiendo estándares, flujos de trabajo y estrategias que mejoran la eficiencia y reducen errores.',
     icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.625 12a1.875 1.875 0 103.75 0 1.875 1.875 0 00-3.75 0zM10.2 19.75c-.993 0-1.787-.787-1.787-1.756 0-.966.78-1.75 1.787-1.75h3.6c.993 0 1.787.787 1.787 1.756 0 .966-.78 1.75-1.787 1.75h-3.6zM14.25 9h2.25M5.625 9h2.25M6.633 18L7.5 16m0 0l2.25-3m-2.25 3L9 16m12-5h2.25M5.625 15h2.25M6.633 18L7.5 16m0 0l2.25-3m-2.25 3L9 16m12-5h2.25M5.625 15h2.25"/></svg>`,
+  },
+  {
+    title: 'Nube de Puntos y Scan-to-BIM',
+    desc: 'Convertimos nubes de puntos en modelos BIM precisos del estado existente, facilitando levantamientos, documentación, rehabilitación, coordinación y toma de decisiones.',
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2v8H3v-6zm4-4l2-2v12H7V8zm4-4l2-2v16h-2V4zm4 4l2-2v12h-2V8zm4 4l2-2v8h-2v-6z"/></svg>`,
   }
 ];
 ---
@@ -47,13 +52,13 @@ const features = [
       <div>
         <p class="text-cyan-accent text-sm tracking-widest uppercase mb-2 font-medium">Nuestros servicios</p>
         <h2 class="font-syne font-bold text-3xl sm:text-4xl md:text-5xl text-text-primary">
-          Soluciones BIM <span class="text-cyan-accent">integrales</span>
+          Soluciones bim <span class="text-cyan-accent">integrales</span>
         </h2>
       </div>
     </div>
 
     <!-- Features Grid -->
-    <div class="features-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div class="features-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
       {features.map((feature) => (
         <div class="feature-card group relative bg-surface border-l-2 
         border-cyan-accent/50 p-8 hover:border hover:border-cyan-accent/40 hover:-translate-y-1 

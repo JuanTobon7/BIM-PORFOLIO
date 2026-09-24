@@ -67,6 +67,16 @@
         <canvas
           id="dotlottie-canvas"
           class="w-full max-w-[800px] h-auto"
+          aria-label="Animación de construcción BIM"
+        ></canvas>
+      </div>
+
+      <!-- MOBILE LOTTIE -->
+      <div class="hero-line lg:hidden flex justify-center items-center my-8 ">
+        <canvas
+          id="dotlottie-canvas-mobile"
+          class="w-full max-w-[320px] h-auto"
+          aria-label="Animación de construcción BIM"
         ></canvas>
       </div>
 
@@ -82,27 +92,39 @@
 <script>
   import { DotLottie } from '@lottiefiles/dotlottie-web';
 
-  // Initialize dotLottie animation when DOM is ready
-  const canvas = document.querySelector('#dotlottie-canvas');
-  if (canvas) {
+  function initDotLottie(canvasSelector: string): DotLottie | null {
+    const canvas = document.querySelector(canvasSelector);
+    if (!canvas) return null;
+
     const dotLottie = new DotLottie({
-      canvas: canvas,
+      canvas: canvas as HTMLCanvasElement,
       autoplay: true,
       loop: true,
       src: '/animations/Construction_works.json',
       renderConfig: {
         autoResize: true,
-        devicePixelRatio: 1,
+        devicePixelRatio: Math.min(window.devicePixelRatio || 1, 2),
       },
       layout: {
-        fit: 'cover',
+        fit: 'contain',
         align: [0.5, 0.5],
       },
       speed: 0.8,
     });
 
-    // Store in window for GSAP to access
-    window.dotLottieInstance = dotLottie;
+    return dotLottie;
+  }
+
+  // Desktop
+  const desktopLottie = initDotLottie('#dotlottie-canvas');
+  if (desktopLottie) {
+    (window as any).dotLottieInstance = desktopLottie;
+  }
+
+  // Mobile
+  const mobileLottie = initDotLottie('#dotlottie-canvas-mobile');
+  if (mobileLottie) {
+    (window as any).dotLottieInstanceMobile = mobileLottie;
   }
 </script>
 

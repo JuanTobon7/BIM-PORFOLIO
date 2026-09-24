@@ -14,17 +14,18 @@ export interface Project {
 export const projects: Project[] = [
   {
     slug: 'carrillo-puerto',
-    title: 'Carrillo Puerto',
-    category: 'Edificio Comercial',
+    title: 'Tren Maya Estación Carrillo Puerto',
+    category: 'Infraestructura',
     year: '2024',
-    location: 'Carrillo Puerto, QR',
+    location: 'Carrillo Puerto, Champotón, México',
     description:
-      'Edificio comercial modelado y coordinado en BIM. Coordinación de instalaciones, detección de interferencias y generación de documentación ejecutiva para su construcción.',
+      'El proyecto contempla el desarrollo de una estación de pasajeros del Tren Maya, de acuerdo a su análisis de demanda de viajeros tiene la categoría de "demanda baja", con una distribución de dos vías + 1 andén, con los componentes de plaza de acceso, gran vestíbulo, andén, zona de abordaje, comercios y servicios públicos, zona operativa, servicios técnicos, cuartos técnicos, infraestructura y zona exterior.',
     details: [
-      { label: 'Cliente', value: 'Privado' },
-      { label: 'Alcance', value: 'Modelado 3D, Coordinación' },
+      { label: 'Cliente', value: 'ARCH+DE CONSULTORÍA' },
+      { label: 'Nombre', value: 'Tren Maya Estación Carrillo Puerto' },
+      { label: 'Alcance', value: 'Modelado y Coordinación BIM Multidisciplinaria' },
       { label: 'Software', value: 'Revit, Navisworks' },
-      { label: 'Ubicación', value: 'Carrillo Puerto, QR' },
+      { label: 'Ubicación', value: 'Carrillo Puerto, Champotón, México' },
     ],
     images: [
       '/carrillo_puerto/Imagen%201.jpg',
@@ -41,17 +42,18 @@ export const projects: Project[] = [
   },
   {
     slug: 'hecelchakan',
-    title: 'Hecelchakan',
-    category: 'Residencial',
+    title: 'Tren Maya Estación Hecelchakan',
+    category: 'Infraestructura',
     year: '2024',
-    location: 'Hecelchakán, CM',
+    location: 'Hecelchakan, Campeche, México',
     description:
-      'Proyecto residencial modelado en BIM. Modelado arquitectónico, estructural y de instalaciones con documentación para construcción.',
+      'El proyecto contempla el desarrollo de una estación de pasajeros del Tren Maya, de acuerdo a su análisis de demanda de viajeros tiene la categoría de "demanda baja", con una distribución de 3 vías + 2 andenes, con los componentes de plaza de acceso, gran vestíbulo, andenes, zona de abordaje, módulo banbien, comercios y servicios públicos, zona operativa, servicios técnicos, cuartos técnicos, infraestructura, paso puente elevado y zona exterior.',
     details: [
-      { label: 'Cliente', value: 'Privado' },
-      { label: 'Alcance', value: 'Modelado 3D, Documentación' },
-      { label: 'Software', value: 'Revit' },
-      { label: 'Ubicación', value: 'Hecelchakán, CM' },
+      { label: 'Cliente', value: 'ARCH+DE CONSULTORÍA' },
+      { label: 'Nombre', value: 'Tren Maya Estación Hecelchakan' },
+      { label: 'Alcance', value: 'Modelado y Coordinación BIM Multidisciplinaria' },
+      { label: 'Software', value: 'Revit, Navisworks' },
+      { label: 'Ubicación', value: 'Hecelchakan, Campeche, México' },
     ],
     images: [
       '/hecelchak/Copia%20de%202.jpg',
@@ -65,20 +67,21 @@ export const projects: Project[] = [
     cover: '/hecelchak/Copia%20de%20IMG_0758.jpg',
     large: false,
   },
-  
+
   {
     slug: 'escarcega',
-    title: 'Escarcerga',
-    category: 'Industrial',
+    title: 'Tren Maya Estación Escárcega',
+    category: 'Infraestructura',
     year: '2023',
-    location: 'Escárcega, CM',
+    location: 'Escárcega, Campeche, México',
     description:
-      'Proyecto industrial con modelado de instalaciones y obra. Levantamiento, modelado y documentación técnica para la ejecución de la obra.',
+      'El proyecto contempla el desarrollo de una estación de pasajeros del Tren Maya, considerada como de "demanda media", con un esquema de 03 (tres) vías + 02 (dos) andenes, y sus componentes tales como, plaza de acceso, vestíbulo, andenes, zona de abordaje, comercios y servicios públicos, zona operativa, servicios técnicos, cuartos técnicos, infraestructura y zona exterior.',
     details: [
-      { label: 'Cliente', value: 'Privado' },
-      { label: 'Alcance', value: 'Instalaciones, Obra' },
-      { label: 'Software', value: 'Revit, AutoCAD' },
-      { label: 'Ubicación', value: 'Escárcega, CM' },
+      { label: 'Cliente', value: 'ARCH+DE CONSULTORÍA' },
+      { label: 'Nombre', value: 'Tren Maya Estación Escárcega' },
+      { label: 'Alcance', value: 'Modelado y Coordinación BIM Multidisciplinaria' },
+      { label: 'Software', value: 'Revit, Navisworks' },
+      { label: 'Ubicación', value: 'Escárcega, Campeche, México' },
     ],
     images: [
       '/escarcega/Foto%20Obra%202.jpg',

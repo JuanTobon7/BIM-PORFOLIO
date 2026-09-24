@@ -1,9 +1,9 @@
 ---
 const stats = [
-  { value: 35, suffix: '+', label: 'Proyectos completados' },
+  { value: 35, suffix: '+', label: 'Proyectos desarrollados' },
   { value: 5, suffix: '+', label: 'Años de experiencia' },
-  { value: 40, suffix: '%', label: 'Reducción de errores' },
-  { value: 5, suffix: '+', label: 'Países alcanzados' },
+  { value: 40, suffix: '%', label: 'Reducción potencial de reprocesos*' },
+  { value: 5, suffix: '+', label: 'Países con proyectos' },
 ];
 
 // Países en orden de relevo: USA -> España -> Perú -> Chile -> México -> Colombia
@@ -43,8 +43,8 @@ const countries = [
           <p class="text-text-secondary text-sm sm:text-base mt-3">{stat.label}</p>
 
           <!-- Flags relay -->
-          {stat.label === 'Países alcanzados' && (
-            <div class="flags-relay flex items-center justify-center gap-2 sm:gap-2.5 mt-4" aria-label="Países alcanzados: Estados Unidos, España, Perú, Chile, México y Colombia">
+          {stat.label === 'Países con proyectos' && (
+            <div class="flags-relay flex items-center justify-center gap-2 sm:gap-2.5 mt-4" aria-label="Países con proyectos: Estados Unidos, España, Perú, Chile, México y Colombia">
               {countries.map((country, index) => (
                 <span
                   class="flag-item inline-block w-7 h-5 sm:w-8 sm:h-5.5 rounded-[3px] overflow-hidden shadow-lg shadow-black/40 ring-1 ring-white/10"

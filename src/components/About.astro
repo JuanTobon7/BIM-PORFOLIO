@@ -1,0 +1,55 @@
+---
+const aboutImage = '/backgrounds/SOBRE_NOSOTROS.png';
+---
+
+<section id="sobre-nosotros" class="relative py-24 sm:py-32 overflow-hidden">
+  <!-- Background image -->
+  <div class="absolute inset-0">
+    <img
+      src={aboutImage}
+      alt=""
+      class="w-full h-full object-cover opacity-40"
+      loading="lazy"
+    />
+    <div class="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/80 to-primary/90"></div>
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="flex items-center gap-6 mb-16">
+      <div class="w-1 h-16 bg-gradient-to-b from-cyan-accent to-transparent rounded-full"></div>
+      <div>
+        <p class="text-cyan-accent text-sm tracking-widest uppercase mb-2 font-medium">Sobre nosotros</p>
+        <h2 class="font-syne font-bold text-3xl sm:text-4xl md:text-5xl text-text-primary">
+          Sobre <span class="text-cyan-accent">BIMCRAFT</span>
+        </h2>
+      </div>
+    </div>
+
+
+      <!-- Text -->
+      <div class="space-y-6 text-text-secondary leading-relaxed lg:col-span-1">
+        <p>
+          En <strong class="text-text-primary">BIMCRAFT</strong> transformamos la manera de planificar, desarrollar y gestionar proyectos de arquitectura y construcción mediante la metodología BIM (Building Information Modeling).
+        <p>
+          Somos una empresa especializada en modelado, coordinación y consultoría BIM, enfocada en brindar soluciones digitales que permiten a nuestros clientes visualizar sus proyectos, detectar interferencias, organizar la información y tomar decisiones con mayor precisión antes y durante la etapa de construcción.
+        </p>
+        <p>
+          Nuestro trabajo integra experiencia técnica, herramientas digitales y una metodología orientada a las necesidades reales de cada proyecto. Desarrollamos modelos BIM de arquitectura, estructuras e instalaciones, coordinación multidisciplinaria, documentación técnica, análisis y simulación digital, planificación y gestión de información.
+        </p>
+        <p>
+          Trabajamos junto a arquitectos, ingenieros, constructoras, desarrolladores y equipos de proyecto, adaptándonos a diferentes escalas y requerimientos, desde la producción de modelos especializados hasta procesos integrales de coordinación BIM.
+        </p>
+        <p>
+          En BIMCRAFT entendemos que el BIM no consiste únicamente en modelar en 3D. Se trata de convertir la información del proyecto en una herramienta para mejorar la planificación, reducir errores, optimizar recursos y construir de manera más eficiente.
+        </p>
+        <p class="text-text-primary font-medium">
+          Nuestro propósito es ser un aliado técnico para empresas que buscan incorporar tecnología, precisión y mejores procesos a sus proyectos de construcción, conectando la experiencia de la industria con las nuevas posibilidades de la transformación digital.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Decorative line -->
+  <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-accent/30 to-transparent"></div>
+</section>
